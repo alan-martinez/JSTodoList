@@ -1,11 +1,12 @@
+import AddTodo from './components/add-todo.js'
+
 export default class View{
     constructor(){
         this.model = null;
         this.table = document.getElementById('table');
-        const btn = document.getElementById('add');
-        btn.onclick = function(){
-            this.addTodo('Titulo', 'desc');
-        }
+        this.addTodoForm = new AddTodo();
+        
+        this.addTodoForm.onclick((title,description) => this.addTodo(title, description));
     }
 
     setModel(model){
@@ -13,6 +14,6 @@ export default class View{
     }
 
     addTodo(title, description){
-        console.log(title, description);
+        const todo = this.model.addTodo(title, description);
     }
 }
